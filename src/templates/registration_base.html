@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" 
+    content = "width=device-width, initial scale = 1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+    .errorlist{
+        list-style-type:none;
+        color:red;
+        font-size:10px;
+        margin:0;
+        padding:0:
+    }
+    .messages{
+        list-style-type:none;
+        color:red;
+        font-size:15px;
+        margin:0;
+        padding:0:
+    }
+    .helptext > ul li{
+        list-style-type:none;       
+        font-size:15px;
+        margin:0;
+        padding:0:
+    }
+    .jumbotron ul{
+        list-style-type:none; 
+        color:blue;      
+        font-size:15px;
+        margin:0;
+        padding:0:        
+    }
+
+    </style>
+</head>
+<body>
+
+    <div class="container justify-content-center text-center">
+        <div class = "col-md-10 offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome</h1>
+                <p class="lead font-italic"><em>Fill in your username(email) and password</em></p>
+                <hr class="my-4">
+                {%block content%}
+                {%endblock%}            
+            </div>
+        </div>
+    </div> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" 
+    crossorigin="anonymous"></script>
+</body>
+</html>

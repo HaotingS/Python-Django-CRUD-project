@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{%block content%}
+
+    <center>
+    {%if searched%}
+        <h1>You Searched For: {{searched}}</h1>
+        <table class="table table-borderless">
+            <thead class ="border-bottom font-weight-bold">
+                <tr>
+                    <td>Coin</td>
+                    <td>Price Guess (USD)</td>
+                </tr>
+            </thead>
+            <tbody>
+                {%if list%}
+                    {%for coin in list%}
+                        {%if searched == coin.name%}
+                            <tr>
+                                <td>{{coin.name}}</td>
+                                <td>{{coin.price_guess}}</td>
+                            </tr>
+                        {%endif%}
+                    {%endfor%}
+                {%endif%}
+            </tbody>
+        </table>
+    {%else%}
+        <h1>You did not search for anything...</h1>
+    {%endif%}
+
+    </center>
+    <a href="javascript:history.back()">Back</a>
+{%endblock content%}

@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<form action ="{% url 'search' %}" method = "POST" autocomplete="off">
+    {%csrf_token%}
+    <div class="input-group rounded">
+        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" name = "searched"
+          aria-describedby="search-addon" />
+        <span class="input-group-text border-0" id="search-addon">
+          <button class="btn btn-outline-secondary" type ="submit">Search</button>
+        </span>
+      </div>
+</form>
+
+
+<table class="table table-borderless">
+    <thead class ="border-bottom font-weight-bold">
+        <tr>
+            <td>Coin</td>
+            <td>Price Guess (USD)</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for coin in page_obj %}
+        {# Each "contact" is a Contact model object. #}
+            <tr>
+                <td>{{coin.name}}</td>
+                <td>{{coin.price_guess}}</td>
+                <td>
+                    <form action = "{%url 'delete' coin.id%}" method = "POST">
+                        {% csrf_token %}
+                        <button type ="submit" class = "btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+Guess the price <a href ="{%url 'input'%}">here</a>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+{%endblock content%}
